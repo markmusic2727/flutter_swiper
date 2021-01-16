@@ -11,6 +11,10 @@ class SwiperControl extends SwiperPlugin {
   ///icon size
   final double size;
 
+  // Dev onTap prop
+
+  final Function onTap;
+
   ///Icon normal color, The theme's [ThemeData.primaryColor] by default.
   final Color color;
 
@@ -24,6 +28,7 @@ class SwiperControl extends SwiperPlugin {
 
   const SwiperControl(
       {this.iconPrevious: Icons.arrow_back_ios,
+      this.onTap,
       this.iconNext: Icons.arrow_forward_ios,
       this.color,
       this.disableColor,
@@ -36,6 +41,7 @@ class SwiperControl extends SwiperPlugin {
     return new GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
+        onTap();
         if (previous) {
           config.controller.previous(animation: true);
         } else {
